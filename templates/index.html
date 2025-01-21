@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Translation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            text-align: center;
+            padding: 50px;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        textarea {
+            width: 60%;
+            height: 100px;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        h3 {
+            color: #555;
+        }
+
+        .output-box {
+            width: 60%;
+            height: 100px;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            background-color: #fff;
+            margin-top: 20px;
+            overflow-y: auto;
+            display: none; /* Hidden by default, displayed when content is available */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>English to French Translator</h1>
+        <form action="/translate" method="post">
+            <label for="text">Enter English text:</label><br>
+            <textarea name="text" rows="4" cols="50" placeholder="Type text here..."></textarea><br><br>
+            <button type="submit">Translate</button>
+        </form>
+
+        {% if french_translation %}
+        <div>
+            <label for="translation">French Translation:</label>
+            <div class="output-box" id="translation-box">
+                {{ french_translation }}
+            </div>
+        </div>
+        <script>
+            document.getElementById('translation-box').style.display = 'block';
+        </script>
+        {% endif %}
+    </div>
+</body>
+</html>
